@@ -39,6 +39,7 @@ $(function() {
     $('body').on('click', '.pagination a.page-link', function(e) {
         e.preventDefault();
         active_page_link = $(this).attr('href');
+        console.log(active_page_link)
         loadTable(active_page_link);
     });
 
