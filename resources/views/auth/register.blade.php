@@ -36,7 +36,7 @@
             <div class="mb-2">
                 <label class="form-label required"> Confirm Password </label>
                 <div class="input-group input-group-flat">
-                    <input type="password" class="form-control password" placeholder="Your password" autocomplete="off" name="user[password_confirmation]" autocomplete="off" value="{{ env('LOGIN_PASS') }}" required>
+                    <input type="password" class="form-control password" placeholder="Your password" autocomplete="off" name="user[password_confirmation]" autocomplete="off" value="" required>
                     <span class="input-group-text">
                         <a href="#" class="link-secondary show-password" data-show='false' title="Show password" data-bs-toggle="tooltip">
                             <i class="fas fa-eye"></i>
