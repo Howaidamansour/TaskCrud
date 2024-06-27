@@ -31,12 +31,7 @@ class CategoryController extends DashboardController
                 : response()->json(['message' => trans('flash.row updated', ['model' => $this->getModule(true)])], 200);
     }
 
-    public function toggleStatus(Category $category)
-    {
-        $category->update(['is_show' => !$category->is_show]);
-        return response()->json(['message' => trans('flash.change status', ['model' => $this->getModule(true)])], 200);
-    }
-
+  
     protected function append(): array
     {
         return [

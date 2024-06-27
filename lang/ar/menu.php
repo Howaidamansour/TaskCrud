@@ -7,7 +7,8 @@ return [
     'profile' => 'الصفحة الشخصية',
     'english' => 'الإنجليزية',
     'arabic' => 'العربية',
-
+    'home' => 'لوحة التحكم',
+    'product_images' => 'صور المنتج',
     // USERS
     'users' => 'المستخدمين',
     'user' => 'مستخدم',
@@ -33,9 +34,9 @@ return [
     'the store' => 'الخزنة',
 
     // ITEMS
-    'items' => 'الأصناف',
-    'item' => 'صنف',
-    'the item' => 'الصنف',
+    'items' => 'المنتجات',
+    'item' => 'منتج',
+    'the item' => 'المنتج',
 
     // INVOICES
     'invoices' => 'الفواتير',

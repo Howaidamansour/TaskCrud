@@ -13,11 +13,16 @@ class ItemService
     public function handel(array $data, ?int $id = null)
     {
         try {
-            $data['image'] = $this->upload( $data['image'] ?? null );
-            DB::beginTransaction();
+            // dd($data);
+            // $data['images'] = $this->upload( $data['images'] ?? null );
+        //    dd($data);
                 $row = Item::updateOrCreate(['id' => $id], $data);
-                $this->syncStores($data['stores'], $row);
-            DB::commit();
+// dd($row);
+                foreach ($data['images'] as $image) {
+                    if($image->isValid()) {
+                        $row->addMedia($image)->toMediaCollection('product-images');
+                    }
+                    }
             return $row;
         } catch(Exception $e) {
             DB::rollBack();
@@ -25,46 +30,20 @@ class ItemService
         }
     }
 
-    protected function syncStores(?array $stores = [], Item $item)
+ 
+    protected function upload($files = null): ?array
     {
-        foreach ($stores as $store) {
-            $item_store = ItemStore::where('item_id', $item->id)->where('store_id', $store['store_id'])->first();
-            if ($item_store) {
-                if ($item_store->quantity != $store['quantity']) {
-                    $qty = $store['quantity'] - $item_store->quantity;
-                    $this->transaction($item, $store['store_id'], $qty, $item_store->quantity);
-                    $item_store->increment('quantity', $qty);
-                }
-            } else {
-                $item_store = ItemStore::create([
-                    'item_id' => $item->id,
-                    'store_id' => $store['store_id'],
-                    'quantity' => number_format($store['quantity'], 4),
-                    'shop_id'  => shopId(),
-                ]);
-                $this->transaction($item, $store['store_id'], $store['quantity']);
-            }
+        // dd($files);
+        if (! $files) return null;
+        $names = [];
+        foreach ($files as $file) {
+            $path = "uploads/items";
+            $name = $file->hashName();
+            $file->move($path, $name);
+            $names[] = $name;
         }
+        
+        return $names;
     }
 
-    protected function upload(?UploadedFile $file = null): ?string
-    {
-        if (! $file) return null;
-
-        $path = "uploads/".shopId()."/items";
-        $name = $file->hashName();
-        $file->move($path, $name);
-        return $name;
-    }
-
-    protected function transaction(Item $item, int $store_id, float $qty, float $old_qty = 0)
-    {
-        ItemTransaction::create([
-            'item_id' => $item->id,
-            'store_id' => $store_id,
-            'qty' => $qty,
-            'old_qty' => $old_qty,
-            'price' => $item->sale_price
-        ]);
-    }
 }

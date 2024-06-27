@@ -26,6 +26,7 @@ $(function() {
             data: {limit: $('#limit').val(), filter: $('#search').val()},
             beforeSend: function (jqHXR) { table.closest('.card').addClass('load'); },
             success: function(response) {
+                console.log(response.view)
                 table.empty().append(response.view);
                 counter.text(response.count);
             },

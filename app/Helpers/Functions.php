@@ -1,11 +1,6 @@
 <?php
 
-if( !function_exists('shopId') ) {
-    function shopId(?int $shop_id = null): ?int
-    {
-        return $shop_id ?? auth()->user()->shop_id ?? null;
-    }
-}
+
 
 if( !function_exists('checkRoute') ) {
     function checkRoute(string $route, bool|string $returned = true): bool|string

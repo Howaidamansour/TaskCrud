@@ -22,18 +22,12 @@ class ItemRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'category_id' => 'required|exists:categories,id,shop_id,'.shopId(),
-            'unit_id'     => 'required|exists:units,id,shop_id,'.shopId(),
-            'stores'      => 'required|array',
-            'stores.*.store_id'=> 'required|exists:stores,id,shop_id,'.shopId(),
-            'stores.*.quantity' => 'required|numeric',
-            'name'        => 'required|string|unique:items,name,'.$this->route('item').',id,shop_id,'.shopId(),
-            'desc'        => 'nullable|string',
-            'image'       => 'nullable|image',
-            'min'         => 'nullable|numeric',
+            'category_id' => 'required|exists:categories,id',
+            'name'        => 'required|string|unique:items,name',
             'sale_price'  => 'nullable|numeric|min:0',
             'pay_price'   => 'nullable|numeric|min:0',
-            'is_active'   => 'nullable|boolean'
+            'images' => 'nullable|array'
+            
         ];
     }
 
@@ -41,15 +35,9 @@ class ItemRequest extends FormRequest
     {
         return [
             'category_id' => trans('menu.the category'),
-            'unit_id'     => trans('menu.the unit'),
             'name'        => trans('items.name'),
-            'barcode'     => trans('items.barcode'),
-            'desc'        => trans('items.desc'),
-            'image'       => trans('items.image'),
-            'min'         => trans('items.min'),
             'sale_price'  => trans('items.sale_price'),
             'pay_price'   => trans('items.pay_price'),
-            'is_active'   => trans('items.show-in-sales'),
         ];
     }
 }

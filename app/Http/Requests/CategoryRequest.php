@@ -22,9 +22,9 @@ class CategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|unique:categories,name,'.$this->route('category').',id,shop_id,'.shopId(),
-            'category_id' => 'nullable|exists:categories,id,shop_id,'.shopId(),
-            'is_show'     => 'required|boolean',
+            'name' => 'required|string|unique:categories,name',
+            'category_id' => 'nullable|exists:categories,id',
+            
         ];
     }
 
@@ -33,12 +33,9 @@ class CategoryRequest extends FormRequest
         return [
             'name'        => trans('categories.name'),
             'category_id' => trans('menu.the category'),
-            'is_show'     => trans('categories.is_show'),
+          
         ];
     }
 
-    protected function prepareForValidation(): void
-    {
-        if ( is_null( $this->is_show ) ) $this->merge(['is_show' => false]);
-    }
+   
 }

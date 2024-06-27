@@ -20,6 +20,7 @@ class ItemController extends DashboardController
 
     public function store(ItemRequest $request, ItemService $service)
     {
+        // dd($request->all());
         $row = $service->handel($request->validated());
 
         return $row instanceof Exception
@@ -46,14 +47,11 @@ class ItemController extends DashboardController
     {
         return [
             'categories' => Category::select('id', 'name')->pluck('name', 'id'),
-            'units'      => Unit::select('id', 'name')->pluck('name', 'id'),
-            'stores'     => Store::select('id', 'name')->pluck('name', 'id'),
-            'barcode'    => (int) Item::max('barcode') + 1,
         ];
     }
 
     protected function query(?int $id = null): Builder
     {
-        return $this->model::filter()->with('unit', 'category')->when($id, fn($query) => $query->where('id', $id));
+        return $this->model::filter()->with('category')->when($id, fn($query) => $query->where('id', $id));
     }
 }

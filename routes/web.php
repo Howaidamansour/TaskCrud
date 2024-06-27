@@ -23,3 +23,5 @@ Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::redirect('/', env('ROUTE_PREFIX', 'dashboard'))->name('home');
 Route::redirect('/home', env('ROUTE_PREFIX', 'dashboard'))->name('home');
+
+

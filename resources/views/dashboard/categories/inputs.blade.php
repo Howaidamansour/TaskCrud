@@ -23,13 +23,6 @@
         @include('layouts.includes.dashboard.validation-error', ['input' => 'category_id'])
     </div>
 
-    <div class="form-group mb-3">
-        <label class="required cursor-pointer" for="is_show">@lang('categories.show-items-in-sales')</label>
-        <label class="form-switch">
-            <input class="form-check-input cursor-pointer" name="is_show" id="is_show" value="1" type="checkbox" @checked(isset($row) && $row->is_show)>
-        </label>
-        @include('layouts.includes.dashboard.validation-error', ['input' => 'is_show'])
-    </div>
 </div>
 
 <div class="card-footer text-center">

@@ -9,11 +9,11 @@
             <th class="w-1">#</th>
             <th>@lang('items.name')</th>
             <th>@lang('menu.the category')</th>
-            <th>@lang('menu.the unit')</th>
+           
             <th>@lang('items.sale_price')</th>
             <th>@lang('items.pay_price')</th>
             <th>@lang('items.image')</th>
-            <th>@lang('items.show-in-sales')</th>
+            
             <th>@lang('buttons.show')</th>
             <th>@lang('buttons.edit')</th>
             <th>@lang('buttons.delete')</th>

@@ -41,7 +41,7 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <a href="{{ routeHelper('shop.index') }}" class="dropdown-item">@lang('buttons.settings')</a>
+                    
                     <div class="dropdown-divider"></div>
                     <form method="post" action="{{ route('logout') }}">
                         @csrf

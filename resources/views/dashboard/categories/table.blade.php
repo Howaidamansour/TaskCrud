@@ -9,7 +9,7 @@
             <th class="w-1">#</th>
             <th>@lang('categories.name')</th>
             <th>@lang('categories.parent')</th>
-            <th>@lang('categories.show-items-in-sales')</th>
+          
             <th>@lang('buttons.show')</th>
             <th>@lang('buttons.edit')</th>
             <th>@lang('buttons.delete')</th>

@@ -7,24 +7,7 @@
         <form method="POST" action="{{ route('register') }}" autocomplete="off" novalidate>
             @csrf
 
-            <div class="mb-3">
-                <label class="form-label required">Shop Name</label>
-                <input type="text" class="form-control" placeholder="Type your Shop Name..." name="shop[name]" autocomplete="off" value="{{ old('shop.name') }}" required>
-                @include('layouts.includes.dashboard.validation-error', ['input' => 'shop.name'])
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label required">Phone</label>
-                <input type="text" class="form-control" placeholder="Type your Phone..." name="shop[phone]" autocomplete="off" value="{{ old('shop.phone') }}" required>
-                @include('layouts.includes.dashboard.validation-error', ['input' => 'shop.phone'])
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label required">Address</label>
-                <input type="text" class="form-control" placeholder="Type your Address..." name="shop[address]" autocomplete="off" value="{{ old('shop.address') }}" required>
-                @include('layouts.includes.dashboard.validation-error', ['input' => 'shop.address'])
-            </div>
-
+           
             <div class="mb-3">
                 <label class="form-label required">Username</label>
                 <input type="text" class="form-control" placeholder="Type your Username..." name="user[name]" autocomplete="off" value="{{ old('user.name') }}" required>

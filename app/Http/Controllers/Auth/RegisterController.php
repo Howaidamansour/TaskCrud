@@ -52,18 +52,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'shop'         => ['required', 'array', 'size:3'],
-            'shop.name'    => ['required', 'string'],
-            'shop.phone'   => ['required', 'string'],
-            'shop.address' => ['required', 'string'],
             'user'         => ['required', 'array', 'size:4'],
             'user.name'    => ['required', 'string', 'max:255'],
             'user.email'   => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$data['user']['name']],
             'user.password'=> ['required', 'string', 'min:3', 'confirmed'],
         ], [], [
-            'shop.name'    => 'name',
-            'shop.phone'   => 'phone',
-            'shop.address' => 'address',
             'user.name'    => 'name',
             'user.email'   => 'email',
             'user.password'=> 'password',
@@ -78,10 +71,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        DB::beginTransaction();
-            $shop = (new ShopService)->handel( $data['shop'] );
-            $user = (new UserService)->handel( array_merge($data['user'], ['shop_id' => $shop->id]) );
-        DB::commit();
-        return User::where('shop_id', $shop->id)->find($user->id);
+            $user = (new UserService)->handel( $data['user']);
+       
+        return User::find($user->id);
     }
 }

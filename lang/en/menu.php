@@ -7,7 +7,7 @@ return [
     'profile' => 'Profile',
     'english' => 'English',
     'arabic' => 'Arabic',
-
+    'home' => 'Home',
     // USERS
     'users' => 'Users',
     'user' => 'User',
@@ -26,16 +26,16 @@ return [
     'units' => 'Units',
     'unit' => 'Unit',
     'the unit' => 'Unit',
-
+    'product_images' => 'Product images',
     // STORES
     'stores' => 'Stores',
     'store' => 'Store',
     'the store' => 'Store',
 
     // ITEMS
-    'items' => 'Items',
-    'item' => 'Item',
-    'the item' => 'Item',
+    'items' => 'Products',
+    'item' => 'product',
+    'the item' => 'Product',
 
     // INVOICES
     'invoices' => 'Invoices',

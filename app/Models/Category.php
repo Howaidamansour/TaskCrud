@@ -12,7 +12,7 @@ class Category extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['name', 'is_show', 'shop_id', 'category_id'];
+    protected $fillable = ['name',  'category_id'];
 
     protected $with = ['parent'];
 
@@ -36,17 +36,6 @@ class Category extends Model
         return $builder->when(request()->get('filter'), fn($query, $filter) => $query->where('name', 'LIKE', "%$filter%"));
     }
 
-    protected static function booted(): void
-    {
-        static::addGlobalScope(new PerShopScope); // assign the Scope here
-    }
+   
 
-    protected static function boot(): void
-    {
-        parent::boot();
-
-        self::creating(function($model) {
-            $model->shop_id = shopId($model->shop_id);
-        });
-    }
 }

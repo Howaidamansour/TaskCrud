@@ -17,10 +17,7 @@
                     <th>Category</th>
                     <th>{{ $row->category->name }}</th>
                 </tr>
-                <tr>
-                    <th>Unit</th>
-                    <th>{{ $row->unit->name }}</th>
-                </tr>
+                
                 <tr>
                     <th>Sale Price</th>
                     <th>{{ $row->sale_price }}</th>
@@ -29,31 +26,26 @@
                     <th>Pay Price</th>
                     <th>{{ $row->pay_price }}</th>
                 </tr>
-                <tr>
-                    <th>Min</th>
-                    <th>{{ $row->min }}</th>
-                </tr>
+               
                 <tr>
                     <th>Image</th>
                     <th>
                         <img class="img-thumbnail" width="100px" src="{{ $row->image }}">
                     </th>
                 </tr>
-                <tr>
-                    <th>Description</th>
-                    <th> {!! $row->desc !!} </th>
-                </tr>
-                <tr>
-                    <th class="bg-info text-white" colspan="2">Stores</th>
-                </tr>
-                @foreach ($row->stores as $store)
-                    <tr>
-                        <th>{{ $store->name }}</th>
-                        <th> {{ $store->pivot->quantity }} </th>
-                    </tr>
-                @endforeach
+               
+                
             </tbody>
         </table>
+    </div>
+
+    <div class="card-body">
+      @foreach ($row->getMedia('product-images') as $image) 
+           
+            <img class="img-thumbnail" width="100px" src="{{ $image->getUrl() }}">
+    
+    @endforeach
+
     </div>
 </div>
 @endsection
