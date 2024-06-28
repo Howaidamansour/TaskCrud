@@ -6,7 +6,6 @@ Route::get('/', 'HomeController@index')->name('index');
 Route::get('change/lang/{lang}', 'HomeController@changeLang')->name('change.lang');
 
 
-
 Route::resource('categories', 'CategoryController');
 Route::post('categories/{category}/toggle/status', 'CategoryController@toggleStatus')->name('categories.toggle.status');
 Route::post('categories/multi-delete', 'CategoryController@multiDelete')->name('categories.multi-delete');
